@@ -138,10 +138,14 @@ let filmes = [
 
 document.querySelector("#btnTodos").onclick = () => {
   apenasFavoritos = false;
+  document.querySelector("#btnTodos").classList.add("ativo");
+  document.querySelector("#btnFavs").classList.remove("ativo");
   listar();
 };
 document.querySelector("#btnFavs").onclick = () => {
   apenasFavoritos = true;
+  document.querySelector("#btnTodos").classList.remove("ativo");
+  document.querySelector("#btnFavs").classList.add("ativo");
   listar();
 };
 listar();
@@ -151,9 +155,10 @@ function listar() {
   listaElem.innerHTML = "";
   filmes.forEach((f) => {
     if (f.favorito || !apenasFavoritos) {
-      let direcaoLIs = f.direcao.map((d) => "<li>" + d + "</li>").join();
-      let elencoLIs = f.elenco.map((d) => "<li>" + d + "</li>").join();
-      let generosLIs = f.generos.map((d) => "<li>" + d + "</li>").join();
+      let direcaoLIs = f.direcao.map((d) => "<li>" + d + "</li>").join("");
+      let elencoLIs = f.elenco.map((d) => "<li>" + d + "</li>").join("");
+      let generosLIs = f.generos.map((d) => "<li>" + d + "</li>").join("");
+      console.log(elencoLIs);
 
       let filmeElem = `
       <section class="filme">
@@ -162,11 +167,7 @@ function listar() {
       }</p>
         <figure class="poster"><img src="./posters/${f.poster}" /></figure>
         <h2 class="titulo">${f.titulo}</h2>
-        <ul class="dados">
-          <li class="ano">${f.ano}</li>
-          <li class="idade">${f.idade}</li>
-          <li class="duracao">${f.duracao}</li>
-        </ul>
+        <p class="dados">${f.ano} &bull; ${f.idade} &bull; ${f.duracao}</p>
         <p class="sinopse">${f.sinopse}</p>
         <p class="rótulo">Direção</p>
         <ul class="direcao">${direcaoLIs}</ul>

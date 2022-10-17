@@ -36,6 +36,10 @@ button:hover {
   background-color: #2b71c7;
 }
 
+button.ativo {
+  background-color: #0b51a7;
+}
+
 #lista {
   display: flex;
   flex-direction: row;
@@ -110,13 +114,13 @@ button:hover {
   padding-right: 5px;
 }
 
-.filme ul li:not(:last-child)::after {
-  content: ","
+
+.filme .direcao li:not(:last-child)::after,
+.filme .elenco li:not(:last-child)::after
+ {
+  content: ",";
 }
 
-.filme .dados li {
-  font-size: 8pt;
-}
 
 .filme .sinopse {
   margin-top: 8pt;
@@ -137,9 +141,6 @@ button:hover {
 .filme .generos {
   margin-top: 6pt;
   margin-bottom: 8pt;
-}
-.filme .generos li:not(:last-child)::after {
-  content: "";
 }
 
 .filme .generos li {
